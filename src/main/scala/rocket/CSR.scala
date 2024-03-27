@@ -472,7 +472,7 @@ class CSRFile(
     val reg = Reg(UInt(xLen.W))
     (reg, Mux(usingSupervisor.B, reg & delegable_exceptions, 0.U))
   }
-  val reg_mip = Reg(new MIP)
+  val reg_mip = RegInit(0.U.asTypeOf(new MIP))
   val reg_mepc = Reg(UInt(vaddrBitsExtended.W))
   val reg_mcause = RegInit(0.U(xLen.W))
   val reg_mtval = Reg(UInt(vaddrBitsExtended.W))
